@@ -1,0 +1,145 @@
+Web Developemt Tools Setup in Ubuntu/Linux mint/Debian
+
+***********************GIT******************
+
+sudo apt install git
+
+*********************************************
+
+****************Visual Studio Code*******************
+
+Docs on:
+https://snapcraft.io/code
+https://snapcraft.io/install/code/mint
+
+sudo apt update
+sudo apt install snapd
+sudo snap install code --classic
+
+-------------Visual Code Settings--------------------
+
+---To save------
+1. install Settings Sync Extension
+2. Login into Github Account
+3. Press ctrl + shift + p and Select Sync: Upload/Update Settings
+[ 4. Press Yes option to replace the setting. ]
+
+---TO restore---
+1. Install Extension Settings Sync
+2. Login into Github Account
+3. Choose the Saved Gist.
+4. Press ctrl + shift + p and Select Sync: Download Settings
+
+-----------------------------------------------------
+***************************************************************
+
+**********************NODE JS*******************
+
+--Installing NVM first--
+git repo: nvm-sh / nvm
+
+sudo apt update
+[[sudo apt install build-essential checkinstall libssl-dev]]
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+or
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+close the terminal and check nvm --version
+
+
+-----------------------NVM USAGE--------------------
+
+nvm install node
+--will install latest node version (not stable one)
+
+nvm install 12
+---can install specific version
+
+The first version installed becomes the default. New shells will start with the default version of node 
+To change use::
+ nvm alias default (node-version)
+ Eg: nvm alias default 12
+
+You can list the download versions of node using:
+nvm ls
+
+You can list available versions using:
+nvm ls-remote
+
+And then in any new shell just use the installed version:
+nvm use node
+eg: nvm use 12
+
+-----------------------------------------------------
+
+---------------------YARN---------------------------
+
+Docs on:https://classic.yarnpkg.com/en/docs/install/#debian-stable
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+sudo apt update && sudo apt install yarn
+
+---------------------------------------
+*******************************************************
+
+*****************************MONGODB****************************
+
+Documentation available on: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+
+sudo apt-get update
+
+sudo apt-get install -y mongodb-org
+
+
+MongoDB is now installed check using:
+mongo --version
+
+sudo systemctl start mongod ---starts mongodb
+sudo systemctl status mongod ---check status
+sudo systemctl stop mongod ---stops mongodb
+
+
+---------------------Robo3T for MONGODB----------------------------
+
+Download the file from here:
+https://robomongo.org/download
+
+cd ~/Downloads
+tar -xzf robo3t-x.x.x-linux-x86_64-xxxxxxx.tar.gz
+
+Rename the folder robo3t
+Download any PNG image of robo3t and put it inside robo3t folder.
+
+sudo mv robo3t /opt
+sudo ln -s /opt/robo3t/bin/robo3t /usr/bin/robo3t
+gedit ~/.local/share/applications/robo3t.desktop
+
+and finally; paste this next code in the file newly created
+[Desktop Entry]
+       Encoding=UTF-8
+       Name=Robo 3T
+       Exec=robo3t
+       Icon=/opt/robo3t/robo3t.png
+       Terminal=false
+       Type=Application
+       Categories=Development;
+
+--------------------------------------------------------------
+***************************************************************
+
+*******************POSTMAN************************************
+
+Download it directly form software manager.
+
+OR
+
+sudo snap install postman
+
+************************************************************
